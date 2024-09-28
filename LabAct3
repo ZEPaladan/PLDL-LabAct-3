@@ -4,7 +4,6 @@ employee_code = 0
 employee_name = ""
 department = ""
 cut_off = 0
-pay_period = 0
 basic_pay = 0
 overtime = 0
 absences = 0
@@ -20,11 +19,12 @@ net_pay = 0
 
 #Input
 company_name = str(input("Company name: "))
-employee_name = str(input("Employee name; "))
+employee_name = str(input("Employee name: "))
 employee_code = int(input("Employee code: "))
 department = str(input("Department: "))
+cut_off = str(input("Salary Date Cut-off: "))
 rate_per_hour = float(input("Rate per hour: "))
-no_of_hours_per_day = float(input("Number of hours per day: "))
+no_of_hours_per_day = float(input("Number of hours per payday: "))
 hours_overtime = float(input("Number of hours overtime per payday: "))
 hours_absent = float(input("Number of hours absent per payday: "))
 hours_tardy = float(input("NUmber of hours tardy: "))
@@ -125,4 +125,36 @@ elif 10417 <= gross_earning <= 16666:
     withholding_tax = (0.00 + 0.05) / 10417
 elif 16667 <= gross_earning <= 33332:
     withholding_tax = (937.50 + 0.2) / 16667
-elif 33333 <= gross_earning <=
+elif 33333 <= gross_earning <= 83332:
+    withholding_tax = (4270.20 + 0.25) / 33333
+elif 83333 <= gross_earning <= 333332:
+    withholding_tax = (16770.70 + 0.3) / 83333
+else:
+    withholding_tax = (91770.70 + 0.35) / 333333
+
+#Calculate Deductions
+deduction = absences + tardy + withholding_tax + sss_contribution + philhealth_contribution + hdmf_contribution
+
+#Calculate Net Pay
+net_pay = gross_earning - deduction
+
+#Display
+print("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+print("Company Name: ", company_name)
+print("Employee Name: ", employee_name)
+print("Employee Code: ", employee_code)
+print("Cut-off: ", cut_off)
+print("Pay period: ", cut_off)
+print("Basic Pay: ", basic_pay)
+print("Overtime Pay: ", overtime)
+print("Absences: ", absences)
+print("Honorarium: ", honorarium)
+print("Tardy: ", tardy)
+print("Withholding Tax: ", withholding_tax)
+print("SSS Contribution: ", sss_contribution)
+print("PhilHealth Contribution: ", philhealth_contribution)
+print("HDMF Contribution: ", hdmf_contribution)
+print("Deductions: ", deduction)
+print("Gross Earnings: ", gross_earning)
+print("Net Pay: ", net_pay)
+print("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
